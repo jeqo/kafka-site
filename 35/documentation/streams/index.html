@@ -1,0 +1,1132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+    <title>Apache Kafka</title>
+<link rel='stylesheet' href='http://localhost:8080/35/documentation/css/styles.css?2' type='text/css'>
+<link rel="icon" type="image/gif" href="http://localhost:8080/35/documentation/images/apache_feather.gif">
+<meta name="robots" content="index,follow"/>
+<meta name="language" content="en"/>
+<meta name="keywords" content="apache kafka messaging queuing distributed stream processing">
+<meta name="description" content="Apache Kafka: A Distributed Streaming Platform.">
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0"/>
+<meta property="og:title" content="Apache Kafka"/>
+<meta property="og:image" content="http://apache-kafka.org/images/apache-kafka.png"/>
+<meta property="og:description" content="Apache Kafka: A Distributed Streaming Platform."/>
+<meta property="og:site_name" content="Apache Kafka"/>
+<meta property="og:type" content="website"/>
+<link href="http://localhost:8080/35/documentation/css/fonts.css" rel="stylesheet">
+<script src="http://localhost:8080/35/documentation/js/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+<link rel="stylesheet" href="http://localhost:8080/35/documentation/css/prism.min.css"/>
+<script defer src="http://localhost:8080/35/documentation/js/prism.min.js"></script>
+
+<script>
+			
+			
+			
+			var legacyDocPaths = [
+				'/07/documentation',
+				'/07/documentation/',
+				'/08/documentation',
+				'/08/documentation/',
+				'/081/documentation',
+				'/081/documentation/',
+				'/082/documentation',
+				'/082/documentation/',
+				'/090/documentation',
+				'/090/documentation/',
+				'/0100/documentation',
+				'/0100/documentation/'
+			];
+
+			
+			
+			var currentPath = window.location.pathname;
+			var shouldRedirect = !legacyDocPaths.includes(currentPath);
+			var isDocumenationPage = currentPath.includes('/documentation');
+
+			var hasNotSpecifiedFullPath = !currentPath.includes('/documentation/streams') && !currentPath.includes('/documentation/streams/');
+
+			
+			
+			var specifiedStreamsAnchor = window.location.hash.includes('#streams_');
+
+			if (shouldRedirect && isDocumenationPage && hasNotSpecifiedFullPath) {
+				if (specifiedStreamsAnchor) {
+					window.location.pathname = currentPath + 'streams';
+				}
+			}
+
+
+
+
+
+    </script>
+
+<script>
+			var _paq = window._paq = window._paq || [];
+			 
+			 
+			_paq.push(['disableCookies']);
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function() {
+				var u="//matomo.privacy.apache.org/";
+				_paq.push(['setTrackerUrl', u+'matomo.php']);
+				_paq.push(['setSiteId', '26']);
+				var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+				g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+			})();
+
+
+
+
+
+    </script>
+
+
+</head>
+<body>
+<div class="main">
+    <div class="header" id="header">
+    <a href="/" class="logo-link">
+        <span class="visually-hidden">Apache Kafka</span>
+    </a>
+
+    <button type="button" class="top-nav-toggle burger-toggle" id="top-nav-toggle" aria-haspopup="true" aria-expanded="false">
+        <span class="visually-hidden">Toggle navigation</span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </button>
+
+    <div class="top-nav-container" id="top-nav-container">
+        <nav class="top-nav" role="navigation" aria-label="Main menu">
+            <ul class="top-nav-list">
+                <li class="top-nav-item" role="menuitem">
+                    <a href="#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false">
+                        Get Started
+                    </a>
+                    <ul class="top-nav-menu" aria-hidden="true" role="menu" title="Get Started">
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/intro" tabindex="-1" class="top-nav-anchor">
+                                Introduction
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/quickstart" tabindex="-1" class="top-nav-anchor">
+                                Quickstart
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/uses" tabindex="-1" class="top-nav-anchor">
+                                Use Cases
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/books-and-papers" tabindex="-1" class="top-nav-anchor">
+                                Books &amp; Papers
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/videos" tabindex="-1" class="top-nav-anchor">
+                                Videos
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a href="/podcasts" tabindex="-1" class="top-nav-anchor">
+                                Podcasts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="top-nav-item" role="menuitem">
+                    <a href="/documentation" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-documentation-menu">
+                        Docs
+                    </a>
+                    <ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-documentation-menu" title="Docs">
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#gettingStarted">
+                                Key Concepts
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#api">
+                                APIs
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#configuration">
+                                Configuration
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#design">
+                                Design
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#implementation">
+                                Implementation
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#operations">
+                                Operations
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#security">
+                                Security
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://cwiki.apache.org/confluence/display/KAFKA/Clients" target="_blank">
+                                Clients
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation#connect">
+                                Kafka Connect
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/documentation/streams">
+                                Kafka Streams
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="top-nav-item" role="menuitem">
+                    <a class="top-nav-item-anchor" href="/powered-by">
+                        Powered By
+                    </a>
+                </li>
+                <li class="top-nav-item" role="menuitem">
+                    <a href="#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-community-menu">
+                        Community
+                    </a>
+                    <ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-community-menu" title="Community">
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://kafka-summit.org/" target="_blank">
+                                Kafka Summit
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/project">
+                                Project Info
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/trademark">
+                                Trademark
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://cwiki.apache.org/confluence/display/KAFKA/Ecosystem" target="_blank">
+                                Ecosystem
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/events">
+                                Events
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="/contact">
+                                Contact us
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="top-nav-item" role="menuitem">
+                    <a href="#" class="top-nav-item-anchor" aria-haspopup="true" aria-expanded="false" aria-controls="nav-community-menu">
+                        Apache
+                    </a>
+                    <ul class="top-nav-menu" aria-hidden="true" role="menu" id="nav-community-menu" title="Community">
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://www.apache.org/licenses/" target="_blank">
+                                License
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://www.apache.org/foundation/sponsorship.html" target="_blank">
+                                Donate
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://www.apache.org/foundation/thanks.html" target="_blank">
+                                Sponsors
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://www.apache.org/security/" target="_blank">
+                                Security
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank">
+                                Privacy
+                            </a>
+                        </li>
+                        <li class="top-nav-menu-item" role="menuitem">
+                            <a class="top-nav-anchor" tabindex="-1" href="https://www.apache.org/" target="_blank">
+                                Apache.org
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="top-nav-item" role="menuitem">
+                    <a href="/downloads" class="top-nav-download" tabindex="-1" id="top-nav-download">
+                        Download Kafka
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</div>
+<div class="main">
+    <div class="content documentation documentation--current">
+        <div class="toc-handle-container">
+            <div class="toc-handle">&lt;</div>
+        </div>
+        <div class="docs-nav">
+            <ul class="toc">
+    <li>1. Getting Started
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/introduction">1.1 Introduction</a>
+            <li><a href="http://localhost:8080/35/documentation/uses">1.2 Use Cases</a>
+            <li><a href="http://localhost:8080/35/documentation/quickstart">1.3 Quick Start</a>
+            <li><a href="http://localhost:8080/35/documentation/ecosystem">1.4 Ecosystem</a>
+            <li><a href="http://localhost:8080/35/documentation/upgrade">1.5 Upgrading</a>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/api">2. APIs</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/api#producerapi">2.1 Producer API</a>
+            <li><a href="http://localhost:8080/35/documentation/api#consumerapi">2.2 Consumer API</a>
+            <li><a href="http://localhost:8080/35/documentation/api#streamsapi">2.3 Streams API</a>
+            <li><a href="http://localhost:8080/35/documentation/api#connectapi">2.4 Connect API</a>
+            <li><a href="http://localhost:8080/35/documentation/api#adminapi">2.5 Admin API</a>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/configuration">3. Configuration</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/configuration#brokerconfigs">3.1 Broker Configs</a>
+            <li><a href="http://localhost:8080/35/documentation/configuration#topicconfigs">3.2 Topic Configs</a>
+            <li><a href="http://localhost:8080/35/documentation/configuration#producerconfigs">3.3 Producer Configs</a>
+            <li><a href="http://localhost:8080/35/documentation/configuration#consumerconfigs">3.4 Consumer Configs</a>
+            <li><a href="http://localhost:8080/35/documentation/configuration#connectconfigs">3.5 Kafka Connect Configs</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/configuration#sourceconnectconfigs">Source Connector Configs</a>
+                    <li><a href="http://localhost:8080/35/documentation/configuration#sinkconnectconfigs">Sink Connector Configs</a>
+                </ul>
+            <li><a href="http://localhost:8080/35/documentation/configuration#streamsconfigs">3.6 Kafka Streams Configs</a>
+            <li><a href="http://localhost:8080/35/documentation/configuration#adminclientconfigs">3.7 AdminClient Configs</a>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/design">4. Design</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/design#majordesignelements">4.1 Motivation</a>
+            <li><a href="http://localhost:8080/35/documentation/design#persistence">4.2 Persistence</a>
+            <li><a href="http://localhost:8080/35/documentation/design#maximizingefficiency">4.3 Efficiency</a>
+            <li><a href="http://localhost:8080/35/documentation/design#theproducer">4.4 The Producer</a>
+            <li><a href="http://localhost:8080/35/documentation/design#theconsumer">4.5 The Consumer</a>
+            <li><a href="http://localhost:8080/35/documentation/design#semantics">4.6 Message Delivery Semantics</a>
+            <li><a href="http://localhost:8080/35/documentation/design#replication">4.7 Replication</a>
+            <li><a href="http://localhost:8080/35/documentation/design#compaction">4.8 Log Compaction</a>
+            <li><a href="http://localhost:8080/35/documentation/design#design_quotas">4.9 Quotas</a>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/implementation">5. Implementation</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/implementation#networklayer">5.1 Network Layer</a>
+            <li><a href="http://localhost:8080/35/documentation/implementation#messages">5.2 Messages</a>
+            <li><a href="http://localhost:8080/35/documentation/implementation#messageformat">5.3 Message format</a>
+            <li><a href="http://localhost:8080/35/documentation/implementation#log">5.4 Log</a>
+            <li><a href="http://localhost:8080/35/documentation/implementation#distributionimpl">5.5 Distribution</a>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/operations">6. Operations</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/operations#basic_ops">6.1 Basic Kafka Operations</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_add_topic">Adding and removing topics</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_modify_topic">Modifying topics</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_restarting">Graceful shutdown</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_leader_balancing">Balancing leadership</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_racks">Balancing Replicas Across Racks</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_mirror_maker">Mirroring data between clusters</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_consumer_lag">Checking consumer position</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_consumer_group">Managing Consumer Groups</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_cluster_expansion">Expanding your cluster</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_decommissioning_brokers">Decommissioning brokers</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#basic_ops_increase_replication_factor">Increasing replication factor</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#rep-throttle">Limiting Bandwidth Usage during Data Migration</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#quotas">Setting quotas</a></li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#datacenters">6.2 Datacenters</a></li>
+            <li><a href="http://localhost:8080/35/documentation/operations#georeplication">6.3 Geo-Replication (Cross-Cluster Data Mirroring)</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-overview">Geo-Replication Overview</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-flows">What Are Replication Flows</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-mirrormaker">Configuring Geo-Replication</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-starting">Starting Geo-Replication</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-stopping">Stopping Geo-Replication</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-apply-config-changes">Applying Configuration Changes</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#georeplication-monitoring">Monitoring Geo-Replication</a></li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#multitenancy">6.4 Multi-Tenancy</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-overview">Multi-Tenancy Overview</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-topic-naming">Creating User Spaces (Namespaces)</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-topic-configs">Configuring Topics</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-security">Securing Clusters and Topics</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-isolation">Isolating Tenants</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-monitoring">Monitoring and Metering</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-georeplication">Multi-Tenancy and Geo-Replication</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#multitenancy-more">Further considerations</a></li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#config">6.5 Important Configs</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#clientconfig">Important Client Configs</a>
+                    <li><a href="http://localhost:8080/35/documentation/operations#prodconfig">A Production Server Configs</a>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#java">6.6 Java Version</a>
+            <li><a href="http://localhost:8080/35/documentation/operations#hwandos">6.7 Hardware and OS</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#os">OS</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#diskandfs">Disks and Filesystems</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#appvsosflush">Application vs OS Flush Management</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#linuxflush">Linux Flush Behavior</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#filesystems">Filesystem Selection</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#replace_disk">Replace KRaft Controller Disk</a></li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#monitoring">6.8 Monitoring</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#remote_jmx">Security Considerations for Remote Monitoring using JMX</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_monitoring">KRaft Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#selector_monitoring">Selector Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#common_node_monitoring">Common Node Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#producer_monitoring">Producer Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#consumer_monitoring">Consumer Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#connect_monitoring">Connect Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kafka_streams_monitoring">Streams Monitoring</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#others_monitoring">Others</a></li>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#zk">6.9 ZooKeeper</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#zkversion">Stable Version</a>
+                    <li><a href="http://localhost:8080/35/documentation/operations#zkops">Operationalization</a>
+                </ul>
+            </li>
+            <li><a href="http://localhost:8080/35/documentation/operations#kraft">6.10 KRaft</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_config">Configuration</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_storage">Storage Tool</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_debug">Debugging</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_deployment">Deploying Considerations</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_missing">Missing Features</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/operations#kraft_zk_migration">ZooKeeper to KRaft Migration</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/security">7. Security</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/security#security_overview">7.1 Security Overview</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#listener_configuration">7.2 Listener Configuration</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#security_ssl">7.3 Encryption and Authentication using SSL</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#security_sasl">7.4 Authentication using SASL</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#security_authz">7.5 Authorization and ACLs</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#security_rolling_upgrade">7.6 Incorporating Security Features in a Running Cluster</a></li>
+            <li><a href="http://localhost:8080/35/documentation/security#zk_authz">7.7 ZooKeeper Authentication</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/security#zk_authz_new">New Clusters</a>
+                        <ul>
+                            <li><a href="http://localhost:8080/35/documentation/security#zk_authz_new_sasl">ZooKeeper SASL Authentication</a></li>
+                            <li><a href="http://localhost:8080/35/documentation/security#zk_authz_new_mtls">ZooKeeper Mutual TLS Authentication</a></li>
+                        </ul>
+                    <li><a href="http://localhost:8080/35/documentation/security#zk_authz_migration">Migrating Clusters</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/security#zk_authz_ensemble">Migrating the ZooKeeper Ensemble</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/security#zk_authz_quorum">ZooKeeper Quorum Mutual TLS Authentication</a></li>
+                </ul>
+            <li><a href="http://localhost:8080/35/documentation/security#zk_encryption">7.8 ZooKeeper Encryption</a></li>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/connect">8. Kafka Connect</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/connect#connect_overview">8.1 Overview</a></li>
+            <li><a href="http://localhost:8080/35/documentation/connect#connect_user">8.2 User Guide</a>
+                <ul>
+                    <li><a href="http://localhost:8080/35/documentation/connect#connect_running">Running Kafka Connect</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/connect#connect_configuring">Configuring Connectors</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/connect#connect_transforms">Transformations</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/connect#connect_rest">REST API</a></li>
+                    <li><a href="http://localhost:8080/35/documentation/connect#connect_errorreporting">Error Reporting in Connect</a></li>
+                </ul>
+            <li><a href="http://localhost:8080/35/documentation/connect#connect_development">8.3 Connector Development Guide</a></li>
+        </ul>
+    </li>
+    <li><a href="http://localhost:8080/35/documentation/streams">9. Kafka Streams</a>
+        <ul>
+            <li><a href="http://localhost:8080/35/documentation/streams/quickstart">9.1 Play with a Streams Application</a></li>
+            <li><a href="http://localhost:8080/35/documentation/streams/tutorial">9.2 Write your own Streams Applications</a></li>
+            <li><a href="http://localhost:8080/35/documentation/streams/developer-guide">9.3 Developer Manual</a></li>
+            <li><a href="http://localhost:8080/35/documentation/streams/core-concepts">9.4 Core Concepts</a></li>
+            <li><a href="http://localhost:8080/35/documentation/streams/architecture">9.5 Architecture</a></li>
+            <li><a href="http://localhost:8080/35/documentation/streams/upgrade-guide">9.6 Upgrade Guide</a></li>
+        </ul>
+    </li>
+</ul>
+
+        </div>
+        <div class="right">
+            <article class="markdown"><h1 id="kafka-streams">
+  Kafka Streams
+  <a class="anchor" href="#kafka-streams">#</a>
+</h1>
+<h2 id="the-easiest-way-to-write-mission-critical-real-time-applications-and-microservices">
+  The easiest way to write mission-critical real-time applications and microservices
+  <a class="anchor" href="#the-easiest-way-to-write-mission-critical-real-time-applications-and-microservices">#</a>
+</h2>
+<p>Kafka Streams is a client library for building applications and
+microservices, where the input and output data are stored in Kafka
+clusters. It combines the simplicity of writing and deploying standard
+Java and Scala applications on the client side with the benefits of
+Kafka's server-side cluster technology.</p>
+<p><img src="/%7B%7Bversion%7D%7D/images/intro_to_streams-iframe-placeholder.png" alt="" />{#iframe-placeholder-intro
+.yt__placeholder .video_1 border=&ldquo;1px&rdquo; style=&ldquo;display:block&rdquo;
+onclick=&ldquo;loadVideo(&lsquo;iframe-placeholder-intro&rsquo;, &lsquo;Z3JKCLG3VP4?rel=0&amp;showinfo=0&amp;end=602&rsquo;, &lsquo;video_1&rsquo;)&rdquo;}
+[(Clicking the image will load a video from YouTube)]{#video_1_warn
+.third-party style=&ldquo;display:block&rdquo;}
+<img src="/%7B%7Bversion%7D%7D/images/creating-streams-iframe-placeholder.png" alt="" />{#iframe-placeholder-creating
+.yt__placeholder .video_2 border=&ldquo;1px&rdquo;
+onclick=&ldquo;loadVideo(&lsquo;iframe-placeholder-creating&rsquo;, &lsquo;LxxeXI1mPKo?rel=0&amp;showinfo=0&amp;end=622&rsquo;, &lsquo;video_2&rsquo;)&rdquo;}
+[(Clicking the image will load a video from YouTube)]{#video_2_warn
+.third-party}
+<img src="/%7B%7Bversion%7D%7D/images/transforming_part_1-iframe-placeholder.png" alt="" />{#iframe-placeholder-transforming
+.yt__placeholder .video_3 border=&ldquo;1px&rdquo;
+onclick=&ldquo;loadVideo(&lsquo;iframe-placeholder-transforming&rsquo;, &lsquo;7JYEEx7SBuE?rel=0&amp;showinfo=0end=557&rsquo;, &lsquo;video_3&rsquo;)&rdquo;}
+[(Clicking the image will load a video from YouTube)]{#video_3_warn
+.third-party}
+<img src="/%7B%7Bversion%7D%7D/images/transforming_part_2-iframe-placeholder.png" alt="" />{#iframe-placeholder-transforming-two
+.yt__placeholder .video_4 border=&ldquo;1px&rdquo;
+onclick=&ldquo;loadVideo(&lsquo;iframe-placeholder-transforming-two&rsquo;, &lsquo;3kJgYIkAeHs?rel=0&amp;showinfo=0&amp;end=564&rsquo;, &lsquo;video_4&rsquo;)&rdquo;}
+[(Clicking the image will load a video from YouTube)]{#video_4_warn .third-party}</p>
+<h2 id="tour-of-the-streams-api">
+  TOUR OF THE STREAMS API
+  <a class="anchor" href="#tour-of-the-streams-api">#</a>
+</h2>
+<p>[1]{.video-number}[Intro to Streams]{.video__text}</p>
+<p>[2]{.video-number}[Creating a Streams Application]{.video__text}</p>
+<p>[3]{.video-number}[Transforming Data Pt. 1]{.video__text}</p>
+<p>[4]{.video-number}[Transforming Data Pt. 2]{.video__text}</p>
+<h2 id="why-youll-love-using-kafka-streams">
+  Why you'll love using Kafka Streams!
+  <a class="anchor" href="#why-youll-love-using-kafka-streams">#</a>
+</h2>
+<ul>
+<li>Elastic, highly scalable, fault-tolerant</li>
+<li>Deploy to containers, VMs, bare metal, cloud</li>
+<li>Equally viable for small, medium, &amp; large use cases</li>
+<li>Fully integrated with Kafka security</li>
+<li>Write standard Java and Scala applications</li>
+<li>Exactly-once processing semantics</li>
+<li>No separate processing cluster required</li>
+<li>Develop on Mac, Linux, Windows</li>
+</ul>
+<p><a href="tutorial">Write your first app</a></p>
+<hr>
+<h2 id="kafka-streams-use-cases">
+  Kafka Streams use cases
+  <a class="anchor" href="#kafka-streams-use-cases">#</a>
+</h2>
+<p><a href="https://open.nytimes.com/publishing-with-apache-kafka-at-the-new-york-times-7f0e3b7d2077"><img src="/documentation/images/icons/NYT.jpg" alt="" /></a></p>
+<p><a href="https://open.nytimes.com/publishing-with-apache-kafka-at-the-new-york-times-7f0e3b7d2077">The New York Times uses Apache Kafka</a>
+and the Kafka Streams to store and distribute, in real-time, published
+content to the various applications and systems that make it available
+to the readers.</p>
+<p><a href="https://www.confluent.io/blog/ranking-websites-real-time-apache-kafkas-streams-api/"><img src="/documentation/images/icons/zalando.png" alt="" /></a></p>
+<p>As the leading online fashion retailer in Europe, Zalando uses Kafka as
+an ESB (Enterprise Service Bus), which helps us in transitioning from a
+monolithic to a micro services architecture. Using Kafka for processing
+<a href="https://www.confluent.io/blog/ranking-websites-real-time-apache-kafkas-streams-api/">event streams</a>{target=&ldquo;blank&rdquo;}
+enables our technical team to do near-real time business intelligence.</p>
+<p><a href="https://engineering.linecorp.com/en/blog/detail/80"><img src="/documentation/images/icons/line.svg" alt="" /></a></p>
+<p><a href="https://engineering.linecorp.com/en/blog/detail/80">LINE uses Apache Kafka</a>
+as a central datahub for our services to communicate to one another.
+Hundreds of billions of messages are produced daily and are used to
+execute various business logic, threat detection, search indexing and
+data analysis. LINE leverages Kafka Streams to reliably transform and
+filter topics enabling sub topics consumers can efficiently consume,
+meanwhile retaining easy maintainability thanks to its sophisticated yet
+minimal code base.</p>
+<p><a href="https://medium.com/@Pinterest_Engineering/using-kafka-streams-api-for-predictive-budgeting-9f58d206c996"><img src="/documentation/images/icons/pinterest.png" alt="" /></a></p>
+<p><a href="https://medium.com/@Pinterest_Engineering/using-kafka-streams-api-for-predictive-budgeting-9f58d206c996">Pinterest uses Apache Kafka and the Kafka Streams</a>
+at large scale to power the real-time, predictive budgeting system of
+their advertising infrastructure. With Kafka Streams, spend predictions
+are more accurate than ever.</p>
+<p><a href="https://www.confluent.io/blog/real-time-financial-alerts-rabobank-apache-kafkas-streams-api/"><img src="/documentation/images/icons/rabobank.jpg" alt="" /></a></p>
+<p>Rabobank is one of the 3 largest banks in the Netherlands. Its digital
+nervous system, the Business Event Bus, is powered by Apache Kafka. It
+is used by an increasing amount of financial processes and services, one
+of which is Rabo Alerts. This service alerts customers in real-time upon
+financial events and is
+<a href="https://www.confluent.io/blog/real-time-financial-alerts-rabobank-apache-kafkas-streams-api/">built using Kafka Streams.</a></p>
+<p><a href="https://speakerdeck.com/xenji/kafka-and-debezium-at-trivago-code-dot-talks-2017-edition"><img src="/documentation/images/icons/trivago.jpg" alt="" /></a></p>
+<p>Trivago is a global hotel search platform. We are focused on reshaping
+the way travelers search for and compare hotels, while enabling hotel
+advertisers to grow their businesses by providing access to a broad
+audience of travelers via our websites and apps. As of 2017, we offer
+access to approximately 1.8 million hotels and other accommodations in
+over 190 countries. We use Kafka, Kafka Connect, and Kafka Streams to
+<a href="https://speakerdeck.com/xenji/kafka-and-debezium-at-trivago-code-dot-talks-2017-edition">enable our developers</a>
+to access data freely in the company. Kafka Streams powers parts of our
+analytics pipeline and delivers endless options to explore and operate
+on the data sources we have at hand.</p>
+<h2 id="hello-kafka-streams">
+  Hello Kafka Streams
+  <a class="anchor" href="#hello-kafka-streams">#</a>
+</h2>
+<p>The code example below implements a WordCount application that is
+elastic, highly scalable, fault-tolerant, stateful, and ready to run in
+production at large scale</p>
+<p>[Java 8+]{.selected .b-java-8 section=&ldquo;java-8&rdquo;} [Java 7]{.b-java-7
+section=&ldquo;java-7&rdquo;} [Scala]{.b-scala section=&ldquo;scala&rdquo;}</p>
+<p>Java 8+</p>
+<pre tabindex="0"><code class="language-line-numbers" data-lang="line-numbers">import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.utils.Bytes;
+import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.KTable;
+import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.state.KeyValueStore;
+
+import java.util.Arrays;
+import java.util.Properties;
+
+public class WordCountApplication {
+
+   public static void main(final String[] args) throws Exception {
+       Properties props = new Properties();
+       props.put(StreamsConfig.APPLICATION_ID_CONFIG, &#34;wordcount-application&#34;);
+       props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, &#34;kafka-broker1:9092&#34;);
+       props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+       props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+
+       StreamsBuilder builder = new StreamsBuilder();
+       KStream&lt;String, String&gt; textLines = builder.stream(&#34;TextLinesTopic&#34;);
+       KTable&lt;String, Long&gt; wordCounts = textLines
+           .flatMapValues(textLine -&gt; Arrays.asList(textLine.toLowerCase().split(&#34;\\W+&#34;)))
+           .groupBy((key, word) -&gt; word)
+           .count(Materialized.&lt;String, Long, KeyValueStore&lt;Bytes, byte[]&gt;&gt;as(&#34;counts-store&#34;));
+       wordCounts.toStream().to(&#34;WordsWithCountsTopic&#34;, Produced.with(Serdes.String(), Serdes.Long()));
+
+       KafkaStreams streams = new KafkaStreams(builder.build(), props);
+       streams.start();
+   }
+
+}
+</code></pre><p>Java 7</p>
+<pre tabindex="0"><code class="language-line-numbers" data-lang="line-numbers">import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.utils.Bytes;
+import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.KTable;
+import org.apache.kafka.streams.kstream.ValueMapper;
+import org.apache.kafka.streams.kstream.KeyValueMapper;
+import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.state.KeyValueStore;
+
+import java.util.Arrays;
+import java.util.Properties;
+
+public class WordCountApplication {
+
+   public static void main(final String[] args) throws Exception {
+       Properties props = new Properties();
+       props.put(StreamsConfig.APPLICATION_ID_CONFIG, &#34;wordcount-application&#34;);
+       props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, &#34;kafka-broker1:9092&#34;);
+       props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+       props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+
+       StreamsBuilder builder = new StreamsBuilder();
+       KStream&lt;String, String&gt; textLines = builder.stream(&#34;TextLinesTopic&#34;);
+       KTable&lt;String, Long&gt; wordCounts = textLines
+           .flatMapValues(new ValueMapper&lt;String, Iterable&lt;String&gt;&gt;() {
+               @Override
+               public Iterable&lt;String&gt; apply(String textLine) {
+                   return Arrays.asList(textLine.toLowerCase().split(&#34;\\W+&#34;));
+               }
+           })
+           .groupBy(new KeyValueMapper&lt;String, String, String&gt;() {
+               @Override
+               public String apply(String key, String word) {
+                   return word;
+               }
+           })
+           .count(Materialized.&lt;String, Long, KeyValueStore&lt;Bytes, byte[]&gt;&gt;as(&#34;counts-store&#34;));
+
+
+       wordCounts.toStream().to(&#34;WordsWithCountsTopic&#34;, Produced.with(Serdes.String(), Serdes.Long()));
+
+       KafkaStreams streams = new KafkaStreams(builder.build(), props);
+       streams.start();
+   }
+
+}
+</code></pre><p>Scala:</p>
+<pre tabindex="0"><code class="language-line-numbers" data-lang="line-numbers">import java.util.Properties
+import java.util.concurrent.TimeUnit
+
+import org.apache.kafka.streams.kstream.Materialized
+import org.apache.kafka.streams.scala.ImplicitConversions._
+import org.apache.kafka.streams.scala._
+import org.apache.kafka.streams.scala.kstream._
+import org.apache.kafka.streams.{KafkaStreams, StreamsConfig}
+
+object WordCountApplication extends App {
+  import Serdes._
+
+  val props: Properties = {
+    val p = new Properties()
+    p.put(StreamsConfig.APPLICATION_ID_CONFIG, &#34;wordcount-application&#34;)
+    p.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, &#34;kafka-broker1:9092&#34;)
+    p
+  }
+
+  val builder: StreamsBuilder = new StreamsBuilder
+  val textLines: KStream[String, String] = builder.stream[String, String](&#34;TextLinesTopic&#34;)
+  val wordCounts: KTable[String, Long] = textLines
+    .flatMapValues(textLine =&gt; textLine.toLowerCase.split(&#34;\\W+&#34;))
+    .groupBy((_, word) =&gt; word)
+    .count()(Materialized.as(&#34;counts-store&#34;))
+  wordCounts.toStream.to(&#34;WordsWithCountsTopic&#34;)
+
+  val streams: KafkaStreams = new KafkaStreams(builder.build(), props)
+  streams.start()
+
+  sys.ShutdownHookThread {
+     streams.close(10, TimeUnit.SECONDS)
+  }
+}
+</code></pre></article>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer__inner">
+        <div class="footer__legal">
+            <span class="footer__legal__one">The contents of this website are &copy; 2023 <a
+                    href="https://www.apache.org/" target="_blank">Apache Software Foundation</a> under the terms of the <a
+                    href="https://www.apache.org/licenses/LICENSE-2.0.html"
+                    target="_blank">Apache License v2</a>.</span>
+            <span class="footer__legal__two">Apache Kafka, Kafka, and the Kafka logo are either registered trademarks or trademarks of The Apache Software Foundation</span>
+            <span class="footer__legal__three">in the United States and other countries.</span>
+            <div>
+                <a href="https://kafka.apache.org/project-security" target="_blank" rel="noreferrer">Security</a>&nbsp;|&nbsp;
+                <a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noreferrer">Donate</a>&nbsp;|&nbsp;
+                <a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noreferrer">Thanks</a>&nbsp;|&nbsp;
+                <a href="https://apache.org/events/current-event" target="_blank" rel="noreferrer">Events</a>&nbsp;|&nbsp;
+                <a href="https://apache.org/licenses/" target="_blank" rel="noreferrer">License</a>&nbsp;|&nbsp;
+                <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank"
+                   rel="noreferrer">Privacy</a>
+            </div>
+        </div>
+        <a class="apache-feather" target="_blank" href="http://www.apache.org">
+            <img width="40" src="http://localhost:8080/35/documentation/images/feather-small.png" alt="Apache Feather">
+        </a>
+    </div>
+</div>
+
+
+<script src="http://localhost:8080/35/documentation/js/handlebars.js"></script>
+<script>
+			$(function () {
+				
+				var templates = [
+					'introduction',
+					'implementation',
+					'design',
+					'api',
+					'configuration',
+					'ops',
+					'security',
+					'connect',
+					'streams',
+					'quickstart',
+					'quickstart-docker',
+					'toc',
+					'upgrade',
+					'content'
+				];
+
+				
+				for(var i = 0; i < templates.length; i++) {
+					var templateScript = $("#" + templates[i] + "-template").html();
+					if(templateScript) {
+						var template = Handlebars.compile(templateScript);
+						var html = template(context);
+						$(".p-" + templates[i]).html(html);
+					}
+				}
+			});
+
+
+
+
+
+
+</script>
+
+<script src="http://localhost:8080/35/documentation/js/jquery.sticky-kit.min.js"></script>
+<script>
+
+			let mobileScrolling = false;
+			let mobileTimeout;
+
+			
+			function checkPageScroll() {
+				if (window.scrollY >= 80 || document.body.scrollTop >= 100) {
+					document.getElementById('header').classList.add('scrolled');
+				} else {
+					document.getElementById('header').classList.remove('scrolled');
+				}
+			}
+
+			function mobilePageScroll() {
+				mobileScrolling = true;
+				mobileTimeout = null;
+				mobileTimeout = setTimeout(checkPageScroll, 200);
+			}
+
+			function pageScroll(e) {
+				requestAnimationFrame(checkPageScroll);
+			};
+
+			function setUpA11yMenus(nav) {
+				const itemsWithMenu = nav.querySelectorAll('[aria-haspopup="true"]');
+				const topLevelItems = nav.querySelectorAll('.top-nav-item-anchor');
+				const navAnchors = nav.querySelectorAll('a');
+				const menus = nav.querySelectorAll('[role="menu"]');
+				const keyMap = {
+					
+					'left': 37, 'up': 38, 'right': 39, 'down': 40,
+					
+					'tab': 9, 'enter': 13, 'esc': 27, 'space': 32,
+				}
+				
+				const keyCodes = [37, 38, 39, 40, 9, 13, 27, 32];
+
+				
+				nav.addEventListener('click', (e) => {
+					if (e.target.hasAttribute('href') && e.target.getAttribute('href') === '#') {
+						e.preventDefault();
+						e.stopPropagation();
+					}
+				});
+
+				for (let i = 0; i < topLevelItems.length; i++) {
+					const item = topLevelItems[i];
+					const attrNames = {
+						currentFocus: 'data-current-focus',
+						hidden: 'aria-hidden',
+						expanded: 'aria-expanded',
+					};
+					
+					
+					const itemMenu = item.parentNode.querySelector('[role="menu"]');
+
+					function selectPreviousMenuItem(e, keyPressed) {
+						let selectedIndex = -1;
+
+						if (!itemMenu) {
+							selectPreviousTopLevelItem(e);
+						}
+
+						if (itemMenu && itemMenu.hasAttribute(attrNames.currentFocus)) {
+							selectedIndex = parseInt(itemMenu.getAttribute(attrNames.currentFocus), 10);
+						}
+						let nextIndex = selectedIndex - 1;
+						const menuItems = itemMenu.getElementsByTagName('a');
+
+						if (nextIndex >= 0) {
+						
+							menuItems[nextIndex].focus();
+							itemMenu.setAttribute(attrNames.currentFocus, nextIndex);
+						} else if (nextIndex === -1) {
+						
+							item.focus();
+							itemMenu.setAttribute(attrNames.currentFocus, -1);
+						} else if (nextIndex === -2) {
+							if (keyPressed === 'tab') {
+								
+								selectPreviousTopLevelItem(e);
+							} else {
+								
+								menuItems[menuItems.length - 1].focus()
+								itemMenu.setAttribute(attrNames.currentFocus, menuItems.length - 1);
+							}
+						}
+					}
+
+					function selectNextMenuItem(keyPressed) {
+						let selectedIndex = -1;
+						let nextIndex;
+						let menuItems;
+
+						if (!itemMenu) {
+							selectNextTopLevelItem();
+						}
+
+						menuItems = itemMenu.getElementsByTagName('a');
+
+						for (let j = 0; j < menuItems.length; j++) {
+							if (menuItems[j] === document.activeElement) {
+								selectedIndex = j;
+								break;
+							}
+						}
+
+						nextIndex = selectedIndex + 1;
+
+						
+
+						if (keyPressed === 'tab') {
+							if (nextIndex >= menuItems.length) {
+								selectNextTopLevelItem()
+							} else {
+								menuItems[nextIndex].focus();
+							}
+						} else {
+							if (nextIndex < menuItems.length) {
+								menuItems[nextIndex].focus();
+							} else {
+								item.focus();
+							}
+						}
+					}
+
+					function selectPreviousTopLevelItem() {
+						let newIndex;
+
+						for (let j = 0; j < topLevelItems.length; j++) {
+							if (topLevelItems[j] === item) {
+								newIndex = j - 1;
+								break;
+							}
+						}
+
+						if (itemMenu) {
+							hideMenu();
+						}
+
+						if (newIndex < 0) {
+							document.querySelector('.logo-link').focus();
+						} else {
+							topLevelItems[newIndex].focus();
+						}
+					}
+
+					function selectNextTopLevelItem() {
+						let newIndex;
+
+						for (let j = 0; j < topLevelItems.length; j++) {
+							if (topLevelItems[j] === item) {
+								newIndex = j + 1;
+								break;
+							}
+						}
+
+						if (itemMenu) {
+							hideMenu();
+						}
+
+						if (newIndex > topLevelItems.length - 1) {
+							document.getElementById('top-nav-download').focus();
+						} else {
+							topLevelItems[newIndex].focus();
+						}
+					}
+
+					function isMenuOpen() {
+						return itemMenu && itemMenu.getAttribute(attrNames.hidden) === 'false';
+					}
+
+					function showMenu() {
+						item.setAttribute(attrNames.expanded, 'true');
+						if (itemMenu) {
+							itemMenu.setAttribute(attrNames.hidden, 'false');
+						}
+					}
+
+					function hideMenu() {
+						item.setAttribute(attrNames.expanded, 'false');
+						if (itemMenu) {
+							itemMenu.setAttribute(attrNames.hidden, 'true');
+							delete itemMenu.dataset.currentFocus;
+						}
+					}
+
+					item.parentNode.addEventListener('mouseover', showMenu);
+					item.parentNode.addEventListener('mouseout', hideMenu);
+					item.parentNode.addEventListener('blur', hideMenu);
+					item.addEventListener('focus', showMenu);
+
+					
+					item.parentNode.addEventListener('keydown', (e) => {
+						
+						if (keyCodes.indexOf(e.keyCode) > -1) {
+							e.preventDefault();
+							e.stopPropagation();
+
+							switch(e.keyCode) {
+								case keyMap.left:
+									if (itemMenu) {
+										if (!isMenuOpen()) {
+											selectPreviousTopLevelItem();
+										} else {
+											hideMenu();
+											item.focus();
+										}
+									} else {
+										selectPreviousTopLevelItem();
+									}
+								break;
+								case keyMap.up:
+									if (itemMenu) {
+										if (isMenuOpen()) {
+											selectPreviousMenuItem(e, 'up');
+										}
+									}
+								break;
+								case keyMap.right:
+									if (!isMenuOpen() || document.activeElement === item) {
+										selectNextTopLevelItem('right');
+									}
+								break;
+								case keyMap.down:
+									if (itemMenu) {
+										if (isMenuOpen()) {
+											selectNextMenuItem('down');
+										} else {
+											showMenu();
+										}
+									}
+								break;
+								case keyMap.tab:
+									const isShiftActive = e.getModifierState('Shift');
+									if (itemMenu) {
+										if (isShiftActive) {
+											selectPreviousTopLevelItem();
+										} else {
+											if (isMenuOpen()) {
+												selectNextMenuItem('tab');
+											} else {
+												showMenu();
+											}
+										}
+									} else {
+										if (isShiftActive) {
+											selectPreviousTopLevelItem();
+										} else {
+											selectNextTopLevelItem('tab');
+										}
+									}
+								break;
+								case keyMap.esc:
+									if (itemMenu && isMenuOpen()) {
+										hideMenu();
+									}
+								break;
+								default:
+									
+								break;
+							}
+						}
+					});
+				};
+			}
+
+			function is_touch_enabled() {
+				return ( 'ontouchstart' in window ) ||
+							( navigator.maxTouchPoints > 0 ) ||
+							( navigator.msMaxTouchPoints > 0 );
+			}
+
+			function setupDocsNav() {
+				var docsContainer = document.querySelector('.documentation--current');
+				var docsHandle = document.querySelector('.toc-handle');
+
+				function toggleDocsWidth() {
+					let isExpanded = docsContainer.classList.toggle('expanded');
+					
+					if (isExpanded) {
+						docsHandle.textContent = ">";
+					} else {
+						docsHandle.textContent = "<";
+					}
+				}
+
+				docsHandle.addEventListener('click', toggleDocsWidth);
+			}
+
+			
+			(function() {
+				var navToggle = document.getElementById('top-nav-toggle');
+				var nav = document.getElementById('top-nav-container');
+				var docsNav = document.querySelector('.docs-nav');
+
+				navToggle.addEventListener('click', () => {
+					navToggle.classList.toggle('active');
+				});
+
+				
+				if (is_touch_enabled()) {
+					nav.querySelectorAll('a').forEach(anchor => anchor.removeAttribute('tabindex'));
+					window.addEventListener('touchmove', mobilePageScroll, false);
+				} else {
+					setUpA11yMenus(nav);
+					window.addEventListener('scroll', pageScroll, false);
+				}
+
+				
+				document.addEventListener("DOMContentLoaded", function() {
+					
+					pageScroll();
+
+					if (docsNav) {
+						setupDocsNav();
+					}
+
+					
+					
+					
+				});
+			}());
+
+
+
+
+
+
+</script>
+</body>
+</html>

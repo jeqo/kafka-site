@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache Kafka documentation</title>
+    <link>http://localhost:8080/35/documentation/</link>
+    <description>Recent content on Apache Kafka documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://localhost:8080/35/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/api/</guid>
+      <description>APIs # // TODO: fix version variables
+Kafka includes five core apis:
+The Producer API allows applications to send streams of data to topics in the Kafka cluster. The Consumer API allows applications to read streams of data from topics in the Kafka cluster. The Streams API allows transforming streams of data from input topics to output topics. The Connect API allows implementing connectors that continually pull from some source system or application into Kafka or push from Kafka into some sink system or application.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/configuration/</guid>
+      <description>Configuration # Kafka uses key-value pairs in the property file format for configuration. These values can be supplied either from a file or programmatically.
+3.1 Broker Configs # The essential configurations are the following:
+broker.id log.dirs zookeeper.connect Topic-level configurations and defaults are discussed in more detail below.
+More details about broker configuration can be found in the scala class kafka.server.KafkaConfig.
+3.1.1 Updating Broker Configs # From Kafka version 1.1 onwards, some of the broker configs can be updated without restarting the broker.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/connect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/connect/</guid>
+      <description>Kafka Connect # 8.1 Overview # Kafka Connect is a tool for scalably and reliably streaming data between Apache Kafka and other systems. It makes it simple to quickly define connectors that move large collections of data into and out of Kafka. Kafka Connect can ingest entire databases or collect metrics from all your application servers into Kafka topics, making the data available for stream processing with low latency. An export job can deliver data from Kafka topics into secondary storage and query systems or into batch systems for offline analysis.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/design/</guid>
+      <description>Design # 4.1 Motivation # We designed Kafka to be able to act as a unified platform for handling all the real-time data feeds a large company might have. To do this we had to think through a fairly broad set of use cases.
+It would have to have high-throughput to support high volume event streams such as real-time log aggregation.
+It would need to deal gracefully with large data backlogs to be able to support periodic data loads from offline systems.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/ecosystem/</guid>
+      <description>Ecosystem # //TODO move to direct link to cwiki instead
+There are a plethora of tools that integrate with Kafka outside the main distribution. The ecosystem page lists many of these, including stream processing systems, Hadoop integration, monitoring, and deployment tools.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/generated/connect_metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/generated/connect_metrics/</guid>
+      <description>[2023-01-19 19:37:36,494] INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics:693) [2023-01-19 19:37:36,497] INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics:703) kafka.connect:type=connect-worker-metrics Attribute name Description connector-countThe number of connectors run in this worker. connector-startup-attempts-totalThe total number of connector startups that this worker has attempted. connector-startup-failure-percentageThe average percentage of this worker&#39;s connectors starts that failed. connector-startup-failure-totalThe total number of connector starts that failed. connector-startup-success-percentageThe average percentage of this worker&#39;s connectors starts that succeeded. connector-startup-success-totalThe total number of connector starts that succeeded.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/implementation/</guid>
+      <description>Implementation # 5.1 Network Layer # The network layer is a fairly straight-forward NIO server, and will not be described in great detail. The sendfile implementation is done by giving the TransferableRecords interface a writeTo method. This allows the file-backed message set to use the more efficient transferTo implementation instead of an in-process buffered write. The threading model is a single acceptor thread and N processor threads which handle a fixed number of connections each.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/introduction/</guid>
+      <description>Introduction # What is event streaming? # Event streaming is the digital equivalent of the human body&#39;s central nervous system. It is the technological foundation for the &#39;always-on&#39; world where businesses are increasingly software-defined and automated, and where the user of software is more software.
+Technically speaking, event streaming is the practice of capturing data in real-time from event sources like databases, sensors, mobile devices, cloud services, and software applications in the form of streams of events; storing these event streams durably for later retrieval; manipulating, processing, and reacting to the event streams in real-time as well as retrospectively; and routing the event streams to different destination technologies as needed.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/operations/</guid>
+      <description>Operations # Here is some information on actually running Kafka as a production system based on usage and experience at LinkedIn. Please send us any additional tips you know of.
+6.1 Basic Kafka Operations # This section will review the most common operations you will perform on your Kafka cluster. All of the tools reviewed in this section are available under the bin/ directory of the Kafka distribution and each tool will print details on all possible commandline options if it is run with no arguments.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/protocol/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/protocol/</guid>
+      <description>Kafka protocol guide # This document covers the wire protocol implemented in Kafka. It is meant to give a readable guide to the protocol that covers the available requests, their binary format, and the proper way to make use of them to implement a client. This document assumes you understand the basic design and terminology described here
+Preliminaries Network Partitioning and bootstrapping Partitioning Strategies Batching Versioning and Compatibility Retrieving Supported API versions SASL Authentication Sequence The Protocol Protocol Primitive Types Notes on reading the request format grammars Common Request and Response Structure Record Batch Evolving the Protocol //TODO: broken link The Request Header //TODO: broken link Versioning //TODO: broken link Constants Error Codes Api Keys The Messages Some Common Philosophical Questions Preliminaries # Network # Kafka uses a binary protocol over TCP.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/quickstart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/quickstart/</guid>
+      <description>Quickstart # Step 1: Get Kafka # Download the latest Kafka release and extract it:
+$ tar -xzf kafka_{{scalaVersion}}-{{fullDotVersion}}.tgz $ cd kafka_{{scalaVersion}}-{{fullDotVersion}} Step 2: Start the Kafka environment # NOTE: Your local environment must have Java 8+ installed.
+Apache Kafka can be started using ZooKeeper or KRaft. To get started with either configuration follow one the sections below but not both.
+Kafka with ZooKeeper # Run the following commands in order to start all services in the correct order:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/security/</guid>
+      <description>Security # 7.1 Security Overview # In release 0.9.0.0, the Kafka community added a number of features that, used either separately or together, increases security in a Kafka cluster. The following security measures are currently supported:
+Authentication of connections to brokers from clients (producers and consumers), other brokers and tools, using either SSL or SASL. Kafka supports the following SASL mechanisms: SASL/GSSAPI (Kerberos) - starting at version 0.9.0.0 SASL/PLAIN - starting at version 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/architecture/</guid>
+      <description>Architecture # Kafka Streams simplifies application development by building on the Kafka producer and consumer libraries and leveraging the native capabilities of Kafka to offer data parallelism, distributed coordination, fault tolerance, and operational simplicity. In this section, we describe how Kafka Streams works underneath the covers.
+The picture below shows the anatomy of an application that uses the Kafka Streams library. Let&#39;s walk through some details.
+{.centered style=&amp;ldquo;width:750px&amp;rdquo;}
+Stream Partitions and Tasks # The messaging layer of Kafka partitions data for storing and transporting it.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/core-concepts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/core-concepts/</guid>
+      <description>Core Concepts # Kafka Streams is a client library for processing and analyzing data stored in Kafka. It builds upon important stream processing concepts such as properly distinguishing between event time and processing time, windowing support, and simple yet efficient management and real-time querying of application state.
+Kafka Streams has a low barrier to entry: You can quickly write and run a small-scale proof-of-concept on a single machine; and you only need to run additional instances of your application on multiple machines to scale up to high-volume production workloads.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/app-reset-tool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/app-reset-tool/</guid>
+      <description>Application Reset Tool # You can reset an application and force it to reprocess its data from scratch by using the application reset tool. This can be useful for development and testing, or when fixing bugs.
+The application reset tool handles the Kafka Streams user topics (input, output, and intermediate topics) and internal topics differently when resetting the application.
+Here&amp;rsquo;s what the application reset tool does for each topic type:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/config-streams/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/config-streams/</guid>
+      <description>Configuring a Streams Application # Kafka and Kafka Streams configuration options must be configured before using Streams. You can configure Kafka Streams by specifying parameters in a java.util.Properties instance.
+Create a java.util.Properties instance.
+Set the parameters. For example:
+import java.util.Properties; import org.apache.kafka.streams.StreamsConfig; Properties settings = new Properties(); // Set a few key parameters settings.put(StreamsConfig.APPLICATION_ID_CONFIG, &amp;#34;my-first-streams-application&amp;#34;); settings.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, &amp;#34;kafka-broker1:9092&amp;#34;); // Any further settings settings.put(... , ...); Configuration parameter reference # This section contains the most common Streams configuration parameters.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/datatypes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/datatypes/</guid>
+      <description>Data Types and Serialization # Every Kafka Streams application must provide Serdes (Serializer/Deserializer) for the data types of record keys and record values (e.g. java.lang.String) to materialize the data when necessary. Operations that require such Serdes information include: stream(), table(), to(), repartition(), groupByKey(), groupBy().
+You can provide Serdes by using either of these methods, but you must use at least one:
+By setting default Serdes in the java.util.Properties config instance.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/dsl-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/dsl-api/</guid>
+      <description>Streams DSL # The Kafka Streams DSL (Domain Specific Language) is built on top of the Streams Processor API. It is the recommended for most users, especially beginners. Most data processing operations can be expressed in just a few lines of DSL code.
+Table of Contents
+Overview Creating source streams from Kafka Transform a stream Stateless transformations Stateful transformations Aggregating Joining Join co-partitioning requirements KStream-KStream Join KTable-KTable Equi-Join KTable-KTable Foreign-Key Join KStream-KTable Join KStream-GlobalKTable Join Windowing Hopping time windows Tumbling time windows Sliding time windows Session Windows Window Final Results Applying processors and transformers (Processor API integration) Naming Operators in a Streams DSL application Controlling KTable update rate Writing streams back to Kafka Testing a Streams application Kafka Streams DSL for Scala Sample Usage Implicit Serdes User-Defined Serdes Overview # In comparison to the Processor API, only the DSL supports:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/dsl-topology-naming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/dsl-topology-naming/</guid>
+      <description>Naming Operators in a Kafka Streams DSL Application # You now can give names to processors when using the Kafka Streams DSL. In the PAPI there are Processors and State Stores and you are required to explicitly name each one.
+At the DSL layer, there are operators. A single DSL operator may compile down to multiple Processors and State Stores, and if required repartition topics. But with the Kafka Streams DSL, all these names are generated for you.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/interactive-queries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/interactive-queries/</guid>
+      <description>Interactive Queries # Interactive queries allow you to leverage the state of your application from outside your application. The Kafka Streams enables your applications to be queryable.
+Table of Contents
+Querying local state stores for an app instance Querying local key-value stores Querying local window stores Querying local custom state stores Querying remote state stores for the entire app Adding an RPC layer to your application Exposing the RPC endpoints of your application Discovering and accessing application instances and their local state stores Demo applications The full state of your application is typically split across many distributed instances of your application, and across many state stores that are managed locally by these application instances.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/manage-topics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/manage-topics/</guid>
+      <description>Managing Streams Application Topics # A Kafka Streams application continuously reads from Kafka topics, processes the read data, and then writes the processing results back into Kafka topics. The application may also auto-create other Kafka topics in the Kafka brokers, for example state store changelogs topics. This section describes the differences these topic types and how to manage the topics and your applications.
+Kafka Streams distinguishes between user topics and internal topics</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/memory-mgmt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/memory-mgmt/</guid>
+      <description>Memory Management # You can specify the total memory (RAM) size used for internal caching and compacting of records. This caching happens before the records are written to state stores or forwarded downstream to other nodes.
+The record caches are implemented slightly different in the DSL and Processor API.
+Table of Contents
+Record caches in the DSL Record caches in the Processor API RocksDB Other memory usage Record caches in the DSL # You can specify the total memory (RAM) size of the record cache for an instance of the processing topology.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/processor-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/processor-api/</guid>
+      <description>Processor API # The Processor API allows developers to define and connect custom processors and to interact with state stores. With the Processor API, you can define arbitrary stream processors that process one received record at a time, and connect these processors with their associated state stores to compose the processor topology that represents a customized processing logic.
+Table of Contents
+Overview Defining a Stream Processor Unit Testing Processors State Stores Defining and creating a State Store Fault-tolerant State Stores Enable or Disable Fault Tolerance of State Stores (Store Changelogs) Timestamped State Stores Implementing Custom State Stores Connecting Processors and State Stores Accessing Processor Context Overview # The Processor API can be used to implement both stateless as well as stateful operations, where the latter is achieved through the use of state stores.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/running-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/running-app/</guid>
+      <description>Running Streams Applications # You can run Java applications that use the Kafka Streams library without any additional configuration or requirements. Kafka Streams also provides the ability to receive notification of the various states of the application. The ability to monitor the runtime status is discussed in the monitoring guide.
+Table of Contents
+Starting a Kafka Streams application Elastic scaling of your application Adding capacity to your application Removing capacity from your application State restoration during workload rebalance Determining how many application instances to run Starting a Kafka Streams application # You can package your Java application as a fat JAR file and then start the application like this:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/security/</guid>
+      <description>Streams Security # Table of Contents
+Required ACL setting for secure Kafka clusters Security example Kafka Streams natively integrates with the Kafka&amp;rsquo;s security features and supports all of the client-side security features in Kafka. Streams leverages the Java Producer and Consumer API.
+To secure your Stream processing applications, configure the security settings in the corresponding Kafka producer and consumer clients, and then specify the corresponding configuration settings in your Kafka Streams application.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/testing/</guid>
+      <description>Testing Kafka Streams # Table of Contents
+Importing the test utilities Testing Streams applications Unit testing Processors Importing the test utilities # To test a Kafka Streams application, Kafka provides a test-utils artifact that can be added as regular dependency to your test code base. Example pom.xml snippet when using Maven:
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.kafka&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;kafka-streams-test-utils&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;{{fullDotVersion}}&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; Testing a Streams application # The test-utils package provides a TopologyTestDriver that can be used pipe data through a Topology that is either assembled manually using Processor API or via the DSL using StreamsBuilder.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/to-be-removed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/to-be-removed/</guid>
+      <description> Developer Guide for Kafka Streams Introduction Run Demo App Tutorial: Write App Concepts Architecture Developer Guide Upgrade This developer guide describes how to write, configure, and execute a Kafka Streams application.
+Writing a Streams Application Configuring a Streams Application Streams DSL Processor API Naming Operators in a Streams DSL application Data Types and Serialization Testing a Streams Application Interactive Queries Memory Management Running Streams Applications Managing Streams Application Topics Streams Security Application Reset Tool Previous Next Documentation Kafka Streams </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/developer-guide/write-streams/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/developer-guide/write-streams/</guid>
+      <description>Writing a Streams Application # Table of Contents
+Libraries and Maven artifacts Using Kafka Streams within your application code Testing a Streams application Any Java or Scala application that makes use of the Kafka Streams library is considered a Kafka Streams application. The computational logic of a Kafka Streams application is defined as a processor topology, which is a graph of stream processors (nodes) and streams (edges).
+You can define the processor topology with the Kafka Streams APIs:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/quickstart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/quickstart/</guid>
+      <description>Run Kafka Streams Demo Application # This tutorial assumes you are starting fresh and have no existing Kafka or ZooKeeper data. However, if you have already started Kafka, feel free to skip the first two steps.
+Kafka Streams is a client library for building mission-critical real-time applications and microservices, where the input and/or output data is stored in Kafka clusters. Kafka Streams combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka&#39;s server-side cluster technology to make these applications highly scalable, elastic, fault-tolerant, distributed, and much more.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/to-be-removed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/to-be-removed/</guid>
+      <description>Kafka Streams Introduction Run Demo App Tutorial: Write App Concepts Architecture Developer Guide Upgrade The easiest way to write mission-critical real-time applications and microservices Kafka Streams is a client library for building applications and microservices, where the input and output data are stored in Kafka clusters. It combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka&#39;s server-side cluster technology.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/tutorial/</guid>
+      <description>Tutorial: Write a Kafka Streams Application # In this guide we will start from scratch on setting up your own project to write a stream processing application using Kafka Streams. It is highly recommended to read the quickstart first on how to run a Streams application written in Kafka Streams if you have not done so.
+Setting up a Maven Project # We are going to use a Kafka Streams Maven Archetype for creating a Streams project structure with the following commands:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/streams/upgrade-guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/streams/upgrade-guide/</guid>
+      <description>Upgrade Guide and API Changes # Upgrading from any older version to {{fullDotVersion}} is possible: if upgrading from 3.2 or below, you will need to do two rolling bounces, where during the first rolling bounce phase you set the config upgrade.from=&amp;quot;older version&amp;quot; (possible values are &amp;quot;0.10.0&amp;quot; - &amp;quot;3.2&amp;quot;) and during the second you remove it. This is required to safely handle 2 changes. The first is introduction of the new cooperative rebalancing protocol of the embedded consumer.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/documentation/</guid>
+      <description>&amp;lt; Documentation Kafka 3.4 Documentation Prior releases: 0.7.x, 0.8.0, 0.8.1.X, 0.8.2.X, 0.9.0.X, 0.10.0.X, 0.10.1.X, 0.10.2.X, 0.11.0.X, 1.0.X, 1.1.X, 2.0.X, 2.1.X, 2.2.X, 2.3.X, 2.4.X, 2.5.X, 2.6.X, 2.7.X, 2.8.X, 3.0.X. 3.1.X. 3.2.X. 3.3.X. 1. Getting Started 1.1 Introduction 1.2 Use Cases 1.3 Quick Start 1.4 Ecosystem 1.5 Upgrading From Previous Versions 2. APIs 3. Configuration 4. Design 5. Implementation 6. Operations 7. Security 8. Kafka Connect 9. Kafka Streams Kafka Streams is a client library for processing and analyzing data stored in Kafka.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/migration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/migration/</guid>
+      <description>Migrating from 0.7.x to 0.8 0.8 is our first (and hopefully last) release with a non-backwards-compatible wire protocol, ZooKeeper layout, and on-disk data format. This was a chance for us to clean up a lot of cruft and start fresh. This means performing a no-downtime upgrade is more painful than normal&amp;mdash;you cannot just swap in the new code in-place. Migration Steps Setup a new cluster running 0.8. Use the 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/toc/</guid>
+      <description> </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/uses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/uses/</guid>
+      <description>Here is a description of a few of the popular use cases for Apache Kafka&amp;reg;. For an overview of a number of these areas in action, see this blog post. Messaging Kafka works well as a replacement for a more traditional message broker. Message brokers are used for a variety of reasons (to decouple processing from data producers, to buffer unprocessed messages, etc). In comparison to most messaging systems Kafka has better throughput, built-in partitioning, replication, and fault-tolerance which makes it a good solution for large scale message processing applications.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/upgrade/</guid>
+      <description>Upgrade # // TODO fix links with variables
+Upgrading to 3.4.0 from any version 0.8.x through 3.3.x # If you are upgrading from a version prior to 2.1.x, please see the note below about the change to the schema used to store consumer offsets. Once you have changed the inter.broker.protocol.version to the latest version, it will not be possible to downgrade to a version prior to 2.1.
+For a rolling upgrade:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/uses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/uses/</guid>
+      <description>Use Cases # Here is a description of a few of the popular use cases for Apache Kafka®. For an overview of a number of these areas in action, see this blog post.
+Messaging # Kafka works well as a replacement for a more traditional message broker. Message brokers are used for a variety of reasons (to decouple processing from data producers, to buffer unprocessed messages, etc). In comparison to most messaging systems Kafka has better throughput, built-in partitioning, replication, and fault-tolerance which makes it a good solution for large scale message processing applications.</description>
+    </item>
+    
+  </channel>
+</rss>

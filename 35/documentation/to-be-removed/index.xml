@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>To-be-removeds on Apache Kafka documentation</title>
+    <link>http://localhost:8080/35/documentation/to-be-removed/</link>
+    <description>Recent content in To-be-removeds on Apache Kafka documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://localhost:8080/35/documentation/to-be-removed/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/documentation/</guid>
+      <description>&amp;lt; Documentation Kafka 3.4 Documentation Prior releases: 0.7.x, 0.8.0, 0.8.1.X, 0.8.2.X, 0.9.0.X, 0.10.0.X, 0.10.1.X, 0.10.2.X, 0.11.0.X, 1.0.X, 1.1.X, 2.0.X, 2.1.X, 2.2.X, 2.3.X, 2.4.X, 2.5.X, 2.6.X, 2.7.X, 2.8.X, 3.0.X. 3.1.X. 3.2.X. 3.3.X. 1. Getting Started 1.1 Introduction 1.2 Use Cases 1.3 Quick Start 1.4 Ecosystem 1.5 Upgrading From Previous Versions 2. APIs 3. Configuration 4. Design 5. Implementation 6. Operations 7. Security 8. Kafka Connect 9. Kafka Streams Kafka Streams is a client library for processing and analyzing data stored in Kafka.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/migration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/migration/</guid>
+      <description>Migrating from 0.7.x to 0.8 0.8 is our first (and hopefully last) release with a non-backwards-compatible wire protocol, ZooKeeper layout, and on-disk data format. This was a chance for us to clean up a lot of cruft and start fresh. This means performing a no-downtime upgrade is more painful than normal&amp;mdash;you cannot just swap in the new code in-place. Migration Steps Setup a new cluster running 0.8. Use the 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/toc/</guid>
+      <description> </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:8080/35/documentation/to-be-removed/uses/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8080/35/documentation/to-be-removed/uses/</guid>
+      <description>Here is a description of a few of the popular use cases for Apache Kafka&amp;reg;. For an overview of a number of these areas in action, see this blog post. Messaging Kafka works well as a replacement for a more traditional message broker. Message brokers are used for a variety of reasons (to decouple processing from data producers, to buffer unprocessed messages, etc). In comparison to most messaging systems Kafka has better throughput, built-in partitioning, replication, and fault-tolerance which makes it a good solution for large scale message processing applications.</description>
+    </item>
+    
+  </channel>
+</rss>
